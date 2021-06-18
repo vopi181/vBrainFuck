@@ -12,14 +12,23 @@ func CompileString(input string) string {
 		switch string(v) {
 		case "+":
 			ret += "++*ptr;\n"
+		case "-":
+			ret += "--*ptr;\n"
 		case "<":
 			ret += "--ptr;\n"
 		case ">":
 			ret += "++ptr;\n"
 		case ".":
 			ret += "putchar(*ptr);\n"
+		case ",":
+			ret += "*ptr = getchar();\n"
+		case "[":
+			ret += "while (*ptr) {\n"
+		case "]":
+			ret += "}\n"
 		}
 	}
+
 	ret += "return 0; \n}"
 	return ret
 }
